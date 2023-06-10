@@ -51,3 +51,30 @@ Constraints:
 nums.length == s.length 
 s consists of 'L' and 'R' only
 nums[i] will be unique.
+
+\
+
+
+
+
+code in python
+
+
+
+
+class Solution:
+    def sumDistance(self, nums: List[int], s: str, d: int) -> int:
+        for i, e in enumerate(s):
+            if e == 'L':
+                nums[i] -= d
+            elif e == 'R':
+                nums[i] += d
+
+        nums.sort()
+        sum = 0 
+        ans = 0
+        for i, e in enumerate(nums):
+            ans += e * i - sum
+            sum += e
+
+        return ans % (10 ** 9 + 7)
